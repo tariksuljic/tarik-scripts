@@ -30,3 +30,6 @@ foreach($group in $userGroups){
 
 #Disable users account
 Disable-ADAccount -Identity $username
+
+#Move to the "Obsolete Accounts" Organizational Unit
+$user | Move-ADObject -TargetPath "OU=Obsolete Accounts,DC=tariklab,DC=local"
