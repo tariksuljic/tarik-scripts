@@ -10,6 +10,9 @@ if($user.PasswordExpired -eq $false){
     exit
 }
 
+#Remove the users manager
+$user | Set-ADUser -clear Manager
+
 #Get the users groups
 $userGroups=Get-ADPrincipalGroupMembership $username | Select Name
 
